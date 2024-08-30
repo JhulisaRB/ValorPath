@@ -4,58 +4,46 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 @Entity
-@Table(name = "appoiment")
+@Table(name = "Appointment")
 public class Appointment {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int idAppointment;
 @Column(nullable = false)
-    private LocalDate date;
-@Column(nullable = false)
-    private String status;
-@ManyToOne
-@JoinColumn(name = "idUser")
-    private Users user;
+    private LocalDate dateAppointment;
+@Column(nullable = false, length = 10)
+    private String statusAppointment;
 
     public Appointment() {
     }
 
-    public Appointment(int id, LocalDate date, String status, Users user) {
-        this.id = id;
-        this.date = date;
-        this.status = status;
-        this.user = user;
+    public Appointment(int idAppointment, LocalDate dateAppointment, String statusAppointment) {
+        this.idAppointment = idAppointment;
+        this.dateAppointment = dateAppointment;
+        this.statusAppointment = statusAppointment;
     }
 
-    public int getId() {
-        return id;
+    public int getIdAppointment() {
+        return idAppointment;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdAppointment(int idAppointment) {
+        this.idAppointment = idAppointment;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getDateAppointment() {
+        return dateAppointment;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDateAppointment(LocalDate dateAppointment) {
+        this.dateAppointment = dateAppointment;
     }
 
-    public String getStatus() {
-        return status;
+    public String getStatusAppointment() {
+        return statusAppointment;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Users getUser() {
-        return user;
-    }
-
-    public void setUser(Users user) {
-        this.user = user;
+    public void setStatusAppointment(String statusAppointment) {
+        this.statusAppointment = statusAppointment;
     }
 }
