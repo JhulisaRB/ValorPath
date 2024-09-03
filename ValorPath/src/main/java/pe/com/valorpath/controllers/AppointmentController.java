@@ -34,7 +34,7 @@ public class AppointmentController {
             return m.map(y,AppointmentDTO.class);
         }).collect(Collectors.toList());
     }
-    @DeleteMapping("/eliminar")
+    @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable("id")Integer id){
         aS.delete(id);
     }
