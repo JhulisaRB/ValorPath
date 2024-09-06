@@ -4,9 +4,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.com.valorpath.dtos.AppointmentDTO;
+import pe.com.valorpath.dtos.CantidadCitasUsersDTO;
 import pe.com.valorpath.entities.Appointment;
 import pe.com.valorpath.serviceinterfaces.IAppointmentService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,5 +45,17 @@ public class AppointmentController {
         ModelMapper m = new ModelMapper();
         AppointmentDTO appointmentDTO = m.map(aS.listId(id), AppointmentDTO.class);
         return appointmentDTO;
+    }
+    @GetMapping("/quantity")
+    public List<CantidadCitasUsersDTO> quantityusersAppointment(){
+        List<String[]> list = aS.cantidadCitas();
+        List<CantidadCitasUsersDTO> listdto = new ArrayList<>();
+        for(String[] columna : list){
+            CantidadCitasUsersDTO dto = new CantidadCitasUsersDTO();
+            dto.setNameAppointment(columna[0]);
+            dto.setQuantityUsers(Integer.parseInt(columna[1]));
+            listdto.add(dto);
+        }
+        return listdto;
     }
 }

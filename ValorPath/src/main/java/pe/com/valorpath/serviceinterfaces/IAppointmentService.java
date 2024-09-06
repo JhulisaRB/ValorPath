@@ -10,4 +10,5 @@ public interface IAppointmentService {
     public void delete (int id);
     public List<Appointment> list();
     public Appointment listId (int id);
+    public List<String[]> cantidadCitas();
 }

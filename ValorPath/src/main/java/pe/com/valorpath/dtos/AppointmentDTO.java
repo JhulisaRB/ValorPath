@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 public class AppointmentDTO {
     private int id;
+    private String name;
     private LocalDate date;
     private String status;
     private Users user;
@@ -16,6 +17,14 @@ public class AppointmentDTO {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public LocalDate getDate() {

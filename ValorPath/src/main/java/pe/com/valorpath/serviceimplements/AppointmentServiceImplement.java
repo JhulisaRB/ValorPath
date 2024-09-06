@@ -36,4 +36,9 @@ public class AppointmentServiceImplement implements IAppointmentService {
     public Appointment listId(int id) {
         return aR.findById(id).orElse(new Appointment());
     }
+
+    @Override
+    public List<String[]> cantidadCitas() {
+        return aR.cantidadUsersPorCitas();
+    }
 }
