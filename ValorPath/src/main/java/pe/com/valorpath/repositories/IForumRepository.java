@@ -24,14 +24,14 @@ public interface IForumRepository extends JpaRepository<Forum, Integer> {
             "FROM Forum f " +
             "JOIN Users u ON f.idUsers = u.idUsers " +
             "WHERE f.date = :date", nativeQuery = true)
-    public Forum contarForosPorDia(@Param("date") LocalDate date);
+    public Long contarForosPorDia(@Param("date") LocalDate date);
 
     @Query(value = "SELECT u.name, COUNT(f.idforum) " +
             "FROM Forum f " +
             "JOIN Users u ON f.idUsers = u.idUsers " +
             "WHERE f.date = :date " +
             "GROUP BY u.name", nativeQuery = true)
-    public List<Object[]> ListarForosPorDiaYUsuario(@Param("date") LocalDate date);
+    public List<Object[]> contarForosPorDiaYUsuario(@Param("date") LocalDate date);
 
     @Query("SELECT u.name, COUNT(f.idforum) " +
             "FROM Forum f JOIN f.idUsers u " +
