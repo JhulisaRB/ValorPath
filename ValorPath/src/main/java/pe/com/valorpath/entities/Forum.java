@@ -18,7 +18,7 @@ public class Forum {
     private LocalDate date;
     @ManyToOne
     @JoinColumn(name = "idUsers")
-    private Users us;
+    private Users idUsers;
 
     public Forum() {
     }
@@ -28,7 +28,7 @@ public class Forum {
         this.title = title;
         this.description = description;
         this.date = date;
-        this.us = us;
+        this.idUsers = us;
     }
 
     public int getIdforum() {
@@ -64,10 +64,10 @@ public class Forum {
     }
 
     public Users getUs() {
-        return us;
+        return idUsers;
     }
 
     public void setUs(Users us) {
-        this.us = us;
+        this.idUsers = us;
     }
 }
