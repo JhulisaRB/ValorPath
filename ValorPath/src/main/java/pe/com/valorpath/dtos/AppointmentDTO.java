@@ -1,6 +1,6 @@
 package pe.com.valorpath.dtos;
 
-import pe.com.valorpath.entities.Users;
+import pe.edu.upc.valorpathg4.entities.Users;
 
 import java.time.LocalDate;
 
@@ -9,7 +9,8 @@ public class AppointmentDTO {
     private String name;
     private LocalDate date;
     private String status;
-    private Users user;
+    private Users psychologist;
+    private Users veteran;
 
     public int getId() {
         return id;
@@ -43,11 +44,19 @@ public class AppointmentDTO {
         this.status = status;
     }
 
-    public Users getUser() {
-        return user;
+    public Users getPsychologist() {
+        return psychologist;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setPsychologist(Users psychologist) {
+        this.psychologist = psychologist;
+    }
+
+    public Users getVeteran() {
+        return veteran;
+    }
+
+    public void setVeteran(Users veteran) {
+        this.veteran = veteran;
     }
 }

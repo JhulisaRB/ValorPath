@@ -2,11 +2,13 @@ package pe.com.valorpath.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.com.valorpath.dtos.AppointmentDTO;
-import pe.com.valorpath.dtos.CantidadCitasUsersDTO;
-import pe.com.valorpath.entities.Appointment;
-import pe.com.valorpath.serviceinterfaces.IAppointmentService;
+import pe.edu.upc.valorpathg4.dtos.AppointmentDTO;
+import pe.edu.upc.valorpathg4.dtos.QuantityAppointmentsAttendedByPsychologistTimeDTO;
+import pe.edu.upc.valorpathg4.dtos.QuantityAppointmentsAttendedByUsersDTO;
+import pe.edu.upc.valorpathg4.entities.Appointment;
+import pe.edu.upc.valorpathg4.servicesinterfaces.IAppointmentService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,7 @@ public class AppointmentController {
     @Autowired
     private IAppointmentService aS;
     @PostMapping("/registrar")
+    @PreAuthorize("hasAnyAuthority('VETERANO','PSICOLOGO')")
     public void registrar ( @RequestBody AppointmentDTO appointmentDTO) {
         ModelMapper m = new ModelMapper();
         Appointment appointment = m.map(appointmentDTO, Appointment.class);
@@ -30,6 +33,7 @@ public class AppointmentController {
         aS.update(appointment);
     }
     @GetMapping("/listar")
+    @PreAuthorize("hasAnyAuthority('VETERANO')")
     public List<AppointmentDTO> listar() {
         return aS.list().stream().map(y->{
             ModelMapper m = new ModelMapper();
@@ -40,6 +44,7 @@ public class AppointmentController {
     public void eliminar(@PathVariable("id")Integer id){
         aS.delete(id);
     }
+
     @GetMapping("/listar/{id}")
     public AppointmentDTO listarPorId(@PathVariable("id")Integer id){
         ModelMapper m = new ModelMapper();
@@ -47,13 +52,29 @@ public class AppointmentController {
         return appointmentDTO;
     }
     @GetMapping("/quantity")
-    public List<CantidadCitasUsersDTO> quantityusersAppointment(){
-        List<String[]> list = aS.cantidadCitas();
-        List<CantidadCitasUsersDTO> listdto = new ArrayList<>();
+    public List<QuantityAppointmentsAttendedByUsersDTO> quantityAppointmentByUsers(){
+        List<String[]> list = aS.cantidadCitasAtendidasPorUsuarios();
+        List<QuantityAppointmentsAttendedByUsersDTO> listdto = new ArrayList<>();
         for(String[] columna : list){
-            CantidadCitasUsersDTO dto = new CantidadCitasUsersDTO();
-            dto.setNameAppointment(columna[0]);
-            dto.setQuantityUsers(Integer.parseInt(columna[1]));
+            QuantityAppointmentsAttendedByUsersDTO dto = new QuantityAppointmentsAttendedByUsersDTO();
+            dto.setIdUser(Integer.parseInt(columna[0]));
+            dto.setNameUser(columna[1]);
+            dto.setLastNameUser(columna[2]);
+            dto.setQuantityAppointmentsAttended(Integer.parseInt(columna[3]));
+            listdto.add(dto);
+        }
+        return listdto;
+    }
+    @GetMapping("/quantityPsicologo")
+    public List<QuantityAppointmentsAttendedByPsychologistTimeDTO> quantityAppointmentByPsychologist(){
+        List<String[]> list = aS.cantidadCitasAtendidasPorPsicologo();
+        List<QuantityAppointmentsAttendedByPsychologistTimeDTO> listdto = new ArrayList<>();
+        for(String[] columna : list){
+            QuantityAppointmentsAttendedByPsychologistTimeDTO dto = new QuantityAppointmentsAttendedByPsychologistTimeDTO();
+            dto.setPsychologistId(Integer.parseInt(columna[0]));
+            dto.setPsychologistName(columna[1]);
+            dto.setPsychologistLastName(columna[2]);
+            dto.setQuantityAppointmentsAttended(Integer.parseInt(columna[3]));
             listdto.add(dto);
         }
         return listdto;

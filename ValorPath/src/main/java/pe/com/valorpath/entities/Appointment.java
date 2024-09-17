@@ -3,31 +3,36 @@ package pe.com.valorpath.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+
 @Entity
-@Table(name = "appointment")
+@Table(name = "appointments")
 public class Appointment {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-@Column(nullable = false, length = 50)
+    @Column(name = "name",length = 100,nullable = false)
     private String name;
-@Column(nullable = false)
+    @Column(nullable = false)
     private LocalDate date;
-@Column(nullable = false)
+    @Column(name = "status",length = 50,nullable = false)
     private String status;
-@ManyToOne
-@JoinColumn(name = "idUser")
-    private Users user;
+    @ManyToOne
+    @JoinColumn(name = "psychologistId")
+    private Users psychologist;
+    @ManyToOne
+    @JoinColumn(name = "veteranId")
+    private Users veteran;
 
     public Appointment() {
     }
 
-    public Appointment(int id, String name, LocalDate date, String status, Users user) {
+    public Appointment(int id, String name, LocalDate date, String status, Users psychologist, Users veteran) {
         this.id = id;
         this.name = name;
         this.date = date;
         this.status = status;
-        this.user = user;
+        this.psychologist = psychologist;
+        this.veteran = veteran;
     }
 
     public int getId() {
@@ -62,11 +67,24 @@ public class Appointment {
         this.status = status;
     }
 
-    public Users getUser() {
-        return user;
+    public Users getPsychologist() {
+        return psychologist;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setPsychologist(Users psychologist) {
+        this.psychologist = psychologist;
+    }
+
+    public Users getVeteran() {
+        return veteran;
+    }
+
+    public void setVeteran(Users veteran) {
+        this.veteran = veteran;
     }
 }
+
+//Pendiente: La cita está programada, pero aún no ha ocurrido.
+//Completada: La cita ha sido realizada.
+//Cancelada: La cita fue cancelada por alguna razón.
+//Reprogramada: La cita fue movida a otra fecha.

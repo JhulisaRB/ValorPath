@@ -1,7 +1,6 @@
-package pe.com.valorpath.serviceinterfaces;
+package pe.com.valorpath.servicesinterfaces;
 
-import pe.com.valorpath.entities.Appointment;
-import pe.com.valorpath.entities.Post;
+import pe.edu.upc.valorpathg4.entities.Post;
 
 import java.util.List;
 
@@ -11,4 +10,5 @@ public interface IPostService {
     public void delete (int id);
     public List<Post> list();
     public Post listId (int id);
+    public List<String[]> cantidadPublicacionesPorVeteranos();
 }

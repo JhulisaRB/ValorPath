@@ -2,11 +2,14 @@ package pe.com.valorpath.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.com.valorpath.dtos.PostDTO;
-import pe.com.valorpath.entities.Post;
-import pe.com.valorpath.serviceinterfaces.IPostService;
+import pe.edu.upc.valorpathg4.dtos.PostDTO;
+import pe.edu.upc.valorpathg4.dtos.QuantityPostsByVeteranDTO;
+import pe.edu.upc.valorpathg4.entities.Post;
+import pe.edu.upc.valorpathg4.servicesinterfaces.IPostService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,8 +18,8 @@ import java.util.stream.Collectors;
 public class PostController {
     @Autowired
     private IPostService pS;
-
     @PostMapping("/registrar")
+    @PreAuthorize("hasAnyAuthority('VETERANO','PSICOLOGO')")
     public void registrar(@RequestBody PostDTO postDTO) {
         ModelMapper m = new ModelMapper();
         Post post = m.map(postDTO, Post.class);
@@ -31,6 +34,7 @@ public class PostController {
     }
 
     @GetMapping("/listar")
+    @PreAuthorize("hasAnyAuthority('VETERANO')")
     public List<PostDTO> listar() {
         return pS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -48,5 +52,18 @@ public class PostController {
         ModelMapper m = new ModelMapper();
         PostDTO postDTO = m.map(pS.listId(id), PostDTO.class);
         return postDTO;
+    }
+    @GetMapping("/quantity")
+    public List<QuantityPostsByVeteranDTO> quantityPostByVeterans(){
+        List<String[]> list = pS.cantidadPublicacionesPorVeteranos();
+        List<QuantityPostsByVeteranDTO> listdto = new ArrayList<>();
+        for(String[] columna : list){
+            QuantityPostsByVeteranDTO dto = new QuantityPostsByVeteranDTO();
+            dto.setUsername(columna[0]);
+            dto.setLastnameUser(columna[1]);
+            dto.setQuantityPosts(Integer.parseInt(columna[2]));
+            listdto.add(dto);
+        }
+        return listdto;
     }
 }

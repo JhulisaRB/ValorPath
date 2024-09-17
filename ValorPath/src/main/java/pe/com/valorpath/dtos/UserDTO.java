@@ -1,51 +1,21 @@
-package pe.com.valorpath.entities;
+package pe.com.valorpath.dtos;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import pe.edu.upc.valorpathg4.entities.Role;
 
 import java.time.LocalDate;
 import java.util.List;
-@Entity
-@Table(name = "users")
-public class Users {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+public class UserDTO {
     private int id;
-    @Column(name = "dni", length = 8, nullable = false)
     private String dni;
-    @Column(name = "username",length = 20, nullable = false)
     private String username;
-    @Column(name = "lastname",length = 20, nullable = false)
     private String lastname;
-    @Column(name = "email",length = 20, nullable = false)
     private String email;
-    @Column(name = "password",length = 200, nullable = false)
     private String password;
-    @Column(name = "birthdate",nullable = false)
     private LocalDate birthdate;
-    @Column(name = "address",length = 100, nullable = false)
     private String address;
     private Boolean enabled;
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId")
     private List<Role> roles;
-
-    public Users() {
-    }
-
-    public Users(int id, String dni, String username, String lastname, String email, String password, LocalDate birthdate, String address, Boolean enabled, List<Role> roles) {
-        this.id = id;
-        this.dni = dni;
-        this.username = username;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
-        this.birthdate = birthdate;
-        this.address = address;
-        this.enabled = enabled;
-        this.roles = roles;
-    }
 
     public int getId() {
         return id;

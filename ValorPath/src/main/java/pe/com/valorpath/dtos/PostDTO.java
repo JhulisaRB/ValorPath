@@ -1,6 +1,6 @@
 package pe.com.valorpath.dtos;
 
-import pe.com.valorpath.entities.Users;
+import pe.edu.upc.valorpathg4.entities.Users;
 
 import java.time.LocalDate;
 
@@ -9,7 +9,7 @@ public class PostDTO {
     private String title;
     private String comment;
     private LocalDate date;
-    private Users user;
+    private Users veteran;
 
     public int getId() {
         return id;
@@ -43,11 +43,11 @@ public class PostDTO {
         this.date = date;
     }
 
-    public Users getUser() {
-        return user;
+    public Users getVeteran() {
+        return veteran;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setVeteran(Users veteran) {
+        this.veteran = veteran;
     }
 }

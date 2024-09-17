@@ -4,30 +4,30 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 @Entity
-@Table(name = "Post")
+@Table(name = "posts")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(nullable = false, length = 50)
+    @Column(name = "title",length = 50,nullable = false)
     private String title;
-    @Column(nullable = false, length = 50)
+    @Column(name = "comment",length = 150,nullable = false)
     private String comment;
     @Column(nullable = false)
     private LocalDate date;
     @ManyToOne
-    @JoinColumn(name = "idUser")
-    private Users user;
+    @JoinColumn(name = "veteranId")
+    private Users veteran;
 
     public Post() {
     }
 
-    public Post(int id, String title, String comment, LocalDate date, Users user) {
+    public Post(int id, String title, String comment, LocalDate date, Users veteran) {
         this.id = id;
         this.title = title;
         this.comment = comment;
         this.date = date;
-        this.user = user;
+        this.veteran = veteran;
     }
 
     public int getId() {
@@ -62,11 +62,18 @@ public class Post {
         this.date = date;
     }
 
-    public Users getUser() {
-        return user;
+    public Users getVeteran() {
+        return veteran;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setVeteran(Users veteran) {
+        this.veteran = veteran;
     }
 }
+//Post
+//
+//id
+//title
+//comment
+//date
+//veteran_id

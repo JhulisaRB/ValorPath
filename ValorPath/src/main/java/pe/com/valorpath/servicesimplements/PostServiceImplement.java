@@ -1,18 +1,16 @@
-package pe.com.valorpath.serviceimplements;
+package pe.com.valorpath.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.com.valorpath.entities.Post;
-import pe.com.valorpath.repositories.IPostRepository;
-import pe.com.valorpath.serviceinterfaces.IPostService;
+import pe.edu.upc.valorpathg4.entities.Post;
+import pe.edu.upc.valorpathg4.repositories.IPostRepository;
+import pe.edu.upc.valorpathg4.servicesinterfaces.IPostService;
 
 import java.util.List;
-
 @Service
-public class PostImplement implements IPostService {
+public class PostServiceImplement implements IPostService {
     @Autowired
     private IPostRepository pR;
-
     @Override
     public void insert(Post post) {
         pR.save(post);
@@ -20,7 +18,7 @@ public class PostImplement implements IPostService {
 
     @Override
     public void update(Post post) {
-        pR.save(post);
+    pR.save(post);
     }
 
     @Override
@@ -36,5 +34,10 @@ public class PostImplement implements IPostService {
     @Override
     public Post listId(int id) {
         return pR.findById(id).orElse(new Post());
+    }
+
+    @Override
+    public List<String[]> cantidadPublicacionesPorVeteranos() {
+        return pR.quantityPostsByVeteran();
     }
 }

@@ -1,16 +1,16 @@
-package pe.com.valorpath.serviceimplements;
+package pe.com.valorpath.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.com.valorpath.entities.Appointment;
-import pe.com.valorpath.repositories.IAppointmentRepository;
-import pe.com.valorpath.serviceinterfaces.IAppointmentService;
+import pe.edu.upc.valorpathg4.entities.Appointment;
+import pe.edu.upc.valorpathg4.repositories.IAppointmentRepository;
+import pe.edu.upc.valorpathg4.servicesinterfaces.IAppointmentService;
 
 import java.util.List;
 
 @Service
 public class AppointmentServiceImplement implements IAppointmentService {
-    @Autowired
+@Autowired
     private IAppointmentRepository aR;
     @Override
     public void insert(Appointment appointment) {
@@ -38,7 +38,12 @@ public class AppointmentServiceImplement implements IAppointmentService {
     }
 
     @Override
-    public List<String[]> cantidadCitas() {
-        return aR.cantidadUsersPorCitas();
+    public List<String[]> cantidadCitasAtendidasPorUsuarios() {
+        return aR.quantityAppointmentsAttendedByUsers();
+    }
+
+    @Override
+    public List<String[]> cantidadCitasAtendidasPorPsicologo() {
+        return aR.quantityAppointmentsAttendedByUsers();
     }
 }
