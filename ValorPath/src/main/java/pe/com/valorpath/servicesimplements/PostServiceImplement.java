@@ -2,9 +2,9 @@ package pe.com.valorpath.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.valorpathg4.entities.Post;
-import pe.edu.upc.valorpathg4.repositories.IPostRepository;
-import pe.edu.upc.valorpathg4.servicesinterfaces.IPostService;
+import pe.com.valorpath.entities.Post;
+import pe.com.valorpath.repositories.IPostRepository;
+import pe.com.valorpath.servicesinterfaces.IPostService;
 
 import java.util.List;
 @Service

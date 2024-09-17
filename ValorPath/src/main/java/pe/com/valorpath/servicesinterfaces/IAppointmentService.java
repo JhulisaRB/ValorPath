@@ -1,6 +1,6 @@
 package pe.com.valorpath.servicesinterfaces;
 
-import pe.edu.upc.valorpathg4.entities.Appointment;
+import pe.com.valorpath.entities.Appointment;
 
 import java.util.List;
 

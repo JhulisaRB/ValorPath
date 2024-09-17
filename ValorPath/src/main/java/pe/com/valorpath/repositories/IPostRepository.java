@@ -3,7 +3,7 @@ package pe.com.valorpath.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import pe.edu.upc.valorpathg4.entities.Post;
+import pe.com.valorpath.entities.Post;
 
 import java.util.List;
 

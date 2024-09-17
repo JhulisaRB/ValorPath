@@ -1,6 +1,6 @@
 package pe.com.valorpath.dtos;
 
-import pe.edu.upc.valorpathg4.entities.Users;
+import pe.com.valorpath.entities.Users;
 
 public class RoleDTO {
     private int id;

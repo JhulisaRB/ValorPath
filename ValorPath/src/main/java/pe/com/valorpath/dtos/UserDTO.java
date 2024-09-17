@@ -1,6 +1,6 @@
 package pe.com.valorpath.dtos;
 
-import pe.edu.upc.valorpathg4.entities.Role;
+import pe.com.valorpath.entities.Role;
 
 import java.time.LocalDate;
 import java.util.List;

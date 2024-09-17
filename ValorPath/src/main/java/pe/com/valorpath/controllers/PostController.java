@@ -4,10 +4,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.valorpathg4.dtos.PostDTO;
-import pe.edu.upc.valorpathg4.dtos.QuantityPostsByVeteranDTO;
-import pe.edu.upc.valorpathg4.entities.Post;
-import pe.edu.upc.valorpathg4.servicesinterfaces.IPostService;
+import pe.com.valorpath.dtos.PostDTO;
+import pe.com.valorpath.dtos.QuantityPostsByVeteranDTO;
+import pe.com.valorpath.entities.Post;
+import pe.com.valorpath.servicesinterfaces.IPostService;
 
 import java.util.ArrayList;
 import java.util.List;

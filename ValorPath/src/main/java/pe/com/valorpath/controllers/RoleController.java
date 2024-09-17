@@ -3,9 +3,9 @@ package pe.com.valorpath.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.valorpathg4.dtos.RoleDTO;
-import pe.edu.upc.valorpathg4.entities.Role;
-import pe.edu.upc.valorpathg4.servicesinterfaces.IRoleService;
+import pe.com.valorpath.dtos.RoleDTO;
+import pe.com.valorpath.entities.Role;
+import pe.com.valorpath.servicesinterfaces.IRoleService;
 
 import java.util.List;
 import java.util.stream.Collectors;

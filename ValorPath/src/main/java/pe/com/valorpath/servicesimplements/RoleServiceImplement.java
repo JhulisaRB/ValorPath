@@ -2,9 +2,9 @@ package pe.com.valorpath.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.valorpathg4.entities.Role;
-import pe.edu.upc.valorpathg4.repositories.IRoleRepository;
-import pe.edu.upc.valorpathg4.servicesinterfaces.IRoleService;
+import pe.com.valorpath.entities.Role;
+import pe.com.valorpath.repositories.IRoleRepository;
+import pe.com.valorpath.servicesinterfaces.IRoleService;
 
 import java.util.List;
 

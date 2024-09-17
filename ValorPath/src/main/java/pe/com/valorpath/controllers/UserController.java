@@ -4,9 +4,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.valorpathg4.dtos.UserDTO;
-import pe.edu.upc.valorpathg4.entities.Users;
-import pe.edu.upc.valorpathg4.servicesinterfaces.IUserService;
+import pe.com.valorpath.dtos.UserDTO;
+import pe.com.valorpath.entities.Users;
+import pe.com.valorpath.servicesinterfaces.IUserService;
 
 import java.util.List;
 import java.util.stream.Collectors;

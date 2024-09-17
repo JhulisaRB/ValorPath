@@ -2,9 +2,9 @@ package pe.com.valorpath.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.valorpathg4.entities.Users;
-import pe.edu.upc.valorpathg4.repositories.IUserRepository;
-import pe.edu.upc.valorpathg4.servicesinterfaces.IUserService;
+import pe.com.valorpath.entities.Users;
+import pe.com.valorpath.repositories.IUserRepository;
+import pe.com.valorpath.servicesinterfaces.IUserService;
 
 import java.util.List;
 

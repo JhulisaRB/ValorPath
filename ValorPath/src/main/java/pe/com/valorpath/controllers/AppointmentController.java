@@ -4,11 +4,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.valorpathg4.dtos.AppointmentDTO;
-import pe.edu.upc.valorpathg4.dtos.QuantityAppointmentsAttendedByPsychologistTimeDTO;
-import pe.edu.upc.valorpathg4.dtos.QuantityAppointmentsAttendedByUsersDTO;
-import pe.edu.upc.valorpathg4.entities.Appointment;
-import pe.edu.upc.valorpathg4.servicesinterfaces.IAppointmentService;
+import pe.com.valorpath.dtos.AppointmentDTO;
+import pe.com.valorpath.dtos.QuantityAppointmentsAttendedByPsychologistTimeDTO;
+import pe.com.valorpath.dtos.QuantityAppointmentsAttendedByUsersDTO;
+import pe.com.valorpath.entities.Appointment;
+import pe.com.valorpath.servicesinterfaces.IAppointmentService;
 
 import java.util.ArrayList;
 import java.util.List;

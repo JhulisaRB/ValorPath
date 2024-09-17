@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.valorpathg4.entities.Users;
-import pe.edu.upc.valorpathg4.repositories.IUserRepository;
+import pe.com.valorpath.entities.Users;
+import pe.com.valorpath.repositories.IUserRepository;
 
 import java.util.ArrayList;
 import java.util.List;

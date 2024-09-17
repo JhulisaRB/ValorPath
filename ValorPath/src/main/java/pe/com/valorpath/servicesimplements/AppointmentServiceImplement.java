@@ -2,9 +2,9 @@ package pe.com.valorpath.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.valorpathg4.entities.Appointment;
-import pe.edu.upc.valorpathg4.repositories.IAppointmentRepository;
-import pe.edu.upc.valorpathg4.servicesinterfaces.IAppointmentService;
+import pe.com.valorpath.entities.Appointment;
+import pe.com.valorpath.repositories.IAppointmentRepository;
+import pe.com.valorpath.servicesinterfaces.IAppointmentService;
 
 import java.util.List;
 
