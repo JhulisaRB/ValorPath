@@ -16,19 +16,25 @@ public class Appointment {
     private LocalDate date;
 @Column(nullable = false)
     private String status;
-@ManyToOne
-@JoinColumn(name = "idUser")
-    private Users user;
+
+    @ManyToOne
+    @JoinColumn(name = "idVeterano")
+    private Users verterano;
+
+    @ManyToOne
+    @JoinColumn(name = "idPsicologo")
+    private Users psicologo;
 
     public Appointment() {
     }
 
-    public Appointment(int id, String name, LocalDate date, String status, Users user) {
+    public Appointment(int id, String name, LocalDate date, String status, Users verterano, Users psicologo) {
         this.id = id;
         this.name = name;
         this.date = date;
         this.status = status;
-        this.user = user;
+        this.verterano = verterano;
+        this.psicologo = psicologo;
     }
 
     public int getId() {
@@ -63,11 +69,19 @@ public class Appointment {
         this.status = status;
     }
 
-    public Users getUser() {
-        return user;
+    public Users getVerterano() {
+        return verterano;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setVerterano(Users verterano) {
+        this.verterano = verterano;
+    }
+
+    public Users getPsicologo() {
+        return psicologo;
+    }
+
+    public void setPsicologo(Users psicologo) {
+        this.psicologo = psicologo;
     }
 }

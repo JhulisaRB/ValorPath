@@ -2,6 +2,7 @@ package pe.edu.upc.valorpath4.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.valorpath4.dtos.UsersDTO;
 import pe.edu.upc.valorpath4.entities.Users;
@@ -17,6 +18,9 @@ public class UsersController {
     @Autowired
     private IUsersService uS;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @GetMapping
     public List<UsersDTO> listar() {
 
@@ -30,6 +34,8 @@ public class UsersController {
     public void insertar(@RequestBody UsersDTO udto) {
         ModelMapper m = new ModelMapper();
         Users u=m.map(udto, Users.class);
+        String encodedPassword = passwordEncoder.encode(u.getPassword());
+        u.setPassword(encodedPassword);
         uS.insert(u);
     }
 

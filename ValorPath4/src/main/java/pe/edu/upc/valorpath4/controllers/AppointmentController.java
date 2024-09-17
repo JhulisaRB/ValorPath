@@ -2,6 +2,7 @@ package pe.edu.upc.valorpath4.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.valorpath4.dtos.AppointmentDTO;
 import pe.edu.upc.valorpath4.dtos.CantidadCitasUsersDTO;
@@ -19,6 +20,7 @@ public class AppointmentController {
     @Autowired
     private IAppointmentService aS;
 
+    @PreAuthorize("hasAuthority('Psicologo')")
     @PostMapping
     public void registar(@RequestBody AppointmentDTO appointmentDTO) {
         ModelMapper m = new ModelMapper();
@@ -26,6 +28,7 @@ public class AppointmentController {
         aS.insert(appointment);
     }
 
+    @PreAuthorize("hasAuthority('Psicologo')")
     @PutMapping("/actualizar")
     public void modificar ( @RequestBody AppointmentDTO appointmentDTO) {
         ModelMapper m = new ModelMapper();
@@ -39,10 +42,13 @@ public class AppointmentController {
             return m.map(y,AppointmentDTO.class);
         }).collect(Collectors.toList());
     }
+
+    @PreAuthorize("hasAuthority('Psicologo')")
     @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable("id")Integer id){
         aS.delete(id);
     }
+
     @GetMapping("/listar/{id}")
     public AppointmentDTO listarPorId(@PathVariable("id")Integer id){
         ModelMapper m = new ModelMapper();
@@ -50,6 +56,7 @@ public class AppointmentController {
         return appointmentDTO;
     }
 
+    @PreAuthorize("hasAuthority('Psicologo')")
     @GetMapping("/quantity")
     public List<CantidadCitasUsersDTO> quantityusersAppointment(){
         List<String[]> list = aS.cantidadCitas();
